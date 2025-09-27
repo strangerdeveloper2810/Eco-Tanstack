@@ -55,13 +55,13 @@ const HeaderComponent: FC = (): JSX.Element => {
             </div>
             <div className="flex items-center space-x-3 sm:space-x-4">
               <Link
-                to="/login"
+                to="/auth/login"
                 className="hover:text-yellow-300 transition-colors duration-300 text-xs sm:text-sm"
               >
                 Đăng nhập
               </Link>
               <Link
-                to="/register"
+                to="/auth/register"
                 className="hover:text-yellow-300 transition-colors duration-300 text-xs sm:text-sm"
               >
                 Đăng ký

@@ -1,8 +1,14 @@
 import { type FC, type JSX, useEffect, useState, Suspense } from "react";
-import { Outlet } from "@tanstack/react-router";
 import { Header, Footer, Contents, LayoutLoading } from "@/components";
+import { Toaster } from "@/components/ui/sonner";
 
-const HomeLayoutComponent: FC = (): JSX.Element => {
+interface HomeLayoutProps {
+  children?: React.ReactNode;
+}
+
+const HomeLayoutComponent: FC<HomeLayoutProps> = ({
+  children,
+}): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -79,11 +85,9 @@ const HomeLayoutComponent: FC = (): JSX.Element => {
         </header>
 
         {/* Main Content */}
-        <main id="main-content" role="main" className="flex-1">
-          <Suspense fallback={<LayoutLoading />}>
-            <Outlet />
-          </Suspense>
-        </main>
+        <Contents>
+          <Suspense fallback={<LayoutLoading />}>{children}</Suspense>
+        </Contents>
 
         {/* Footer */}
         <footer role="contentinfo">
@@ -142,6 +146,9 @@ const HomeLayoutComponent: FC = (): JSX.Element => {
           </svg>
         </a>
       </div>
+
+      {/* Toast Container */}
+      <Toaster />
     </div>
   );
 };

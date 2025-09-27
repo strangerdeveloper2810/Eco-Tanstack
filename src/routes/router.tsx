@@ -3,9 +3,10 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
+  Outlet,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { HomeLayout } from "@/layouts";
+import { HomeLayout, AuthLayout } from "@/layouts";
 import { SuspenseWrapper } from "@/components";
 
 // Lazy load pages for better performance
@@ -71,20 +72,22 @@ const ContactPage = lazy(() =>
 const rootRoute = createRootRoute({
   component: () => (
     <>
-      <HomeLayout />
+      <Outlet />
       <TanStackRouterDevtools />
     </>
   ),
 });
 
-// Index route
+// Index route - home page with HomeLayout
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
   component: () => (
-    <SuspenseWrapper>
-      <HomePage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <HomePage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -93,9 +96,11 @@ const moviesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/movies",
   component: () => (
-    <SuspenseWrapper>
-      <MoviesPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <MoviesPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -103,9 +108,11 @@ const movieDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/movies/$movieId",
   component: () => (
-    <SuspenseWrapper>
-      <MovieDetailPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <MovieDetailPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -114,9 +121,11 @@ const cinemasRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/cinemas",
   component: () => (
-    <SuspenseWrapper>
-      <CinemasPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <CinemasPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -124,9 +133,11 @@ const cinemaDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/cinemas/$cinemaId",
   component: () => (
-    <SuspenseWrapper>
-      <CinemaDetailPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <CinemaDetailPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -135,9 +146,11 @@ const bookingRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/booking",
   component: () => (
-    <SuspenseWrapper>
-      <BookingPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <BookingPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -146,30 +159,11 @@ const profileRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/profile",
   component: () => (
-    <SuspenseWrapper>
-      <ProfilePage />
-    </SuspenseWrapper>
-  ),
-});
-
-// Auth routes
-const loginRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/login",
-  component: () => (
-    <SuspenseWrapper>
-      <LoginPage />
-    </SuspenseWrapper>
-  ),
-});
-
-const registerRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/register",
-  component: () => (
-    <SuspenseWrapper>
-      <RegisterPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <ProfilePage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -178,9 +172,11 @@ const newsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/news",
   component: () => (
-    <SuspenseWrapper>
-      <NewsPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <NewsPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -189,9 +185,11 @@ const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/contact",
   component: () => (
-    <SuspenseWrapper>
-      <ContactPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <ContactPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -200,9 +198,36 @@ const testErrorRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/test-error",
   component: () => (
-    <SuspenseWrapper>
-      <TestErrorPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <TestErrorPage />
+      </SuspenseWrapper>
+    </HomeLayout>
+  ),
+});
+
+// Auth routes
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/auth/login",
+  component: () => (
+    <AuthLayout>
+      <SuspenseWrapper>
+        <LoginPage />
+      </SuspenseWrapper>
+    </AuthLayout>
+  ),
+});
+
+const registerRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/auth/register",
+  component: () => (
+    <AuthLayout>
+      <SuspenseWrapper>
+        <RegisterPage />
+      </SuspenseWrapper>
+    </AuthLayout>
   ),
 });
 
@@ -211,9 +236,11 @@ const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "*",
   component: () => (
-    <SuspenseWrapper>
-      <NotFoundPage />
-    </SuspenseWrapper>
+    <HomeLayout>
+      <SuspenseWrapper>
+        <NotFoundPage />
+      </SuspenseWrapper>
+    </HomeLayout>
   ),
 });
 
@@ -226,11 +253,11 @@ const routeTree = rootRoute.addChildren([
   cinemaDetailRoute,
   bookingRoute,
   profileRoute,
-  loginRoute,
-  registerRoute,
   newsRoute,
   contactRoute,
   testErrorRoute,
+  loginRoute,
+  registerRoute,
   notFoundRoute,
 ]);
 

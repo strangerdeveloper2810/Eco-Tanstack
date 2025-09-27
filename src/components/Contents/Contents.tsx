@@ -1,9 +1,12 @@
 import { type FC, type JSX } from "react";
-import { Outlet } from "@tanstack/react-router";
 
-const ContentsComponent: FC = (): JSX.Element => {
+interface ContentsProps {
+  children?: React.ReactNode;
+}
+
+const ContentsComponent: FC<ContentsProps> = ({ children }): JSX.Element => {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb placeholder - can be added later */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-3">
@@ -26,9 +29,7 @@ const ContentsComponent: FC = (): JSX.Element => {
 
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-8">
-        <div className="animate-fade-in-up">
-          <Outlet />
-        </div>
+        <div className="animate-fade-in-up">{children}</div>
       </div>
 
       {/* Back to Top Button */}
@@ -51,7 +52,7 @@ const ContentsComponent: FC = (): JSX.Element => {
           />
         </svg>
       </button>
-    </main>
+    </div>
   );
 };
 
