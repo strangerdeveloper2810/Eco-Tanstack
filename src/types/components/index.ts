@@ -1,6 +1,16 @@
 import { type ReactNode, type FC } from "react";
 import { type FallbackProps } from "react-error-boundary";
 
+// Layout Props
+interface HomeLayoutProps {
+  children?: ReactNode;
+}
+
+interface AuthLayoutProps {
+  children?: ReactNode;
+}
+
+// Component Props
 interface ContentsProps {
   children: ReactNode;
 }
@@ -17,4 +27,16 @@ interface ErrorBoundaryProps {
   onReset?: () => void;
 }
 
-export type { ContentsProps, SuspenseWrapperProps, ErrorBoundaryProps };
+// Page Props (if needed)
+interface PageProps {
+  children?: ReactNode;
+}
+
+export type {
+  HomeLayoutProps,
+  AuthLayoutProps,
+  ContentsProps,
+  SuspenseWrapperProps,
+  ErrorBoundaryProps,
+  PageProps,
+};

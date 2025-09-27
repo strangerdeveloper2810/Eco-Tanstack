@@ -1,10 +1,7 @@
 import { type FC, type JSX, useEffect, useState, Suspense } from "react";
 import { Header, Footer, Contents, LayoutLoading } from "@/components";
 import { Toaster } from "@/components/ui/sonner";
-
-interface HomeLayoutProps {
-  children?: React.ReactNode;
-}
+import { type HomeLayoutProps } from "@/types";
 
 const HomeLayoutComponent: FC<HomeLayoutProps> = ({
   children,

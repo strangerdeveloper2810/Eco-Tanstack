@@ -1,8 +1,5 @@
 import { type FC, type JSX } from "react";
-
-interface ContentsProps {
-  children?: React.ReactNode;
-}
+import { type ContentsProps } from "@/types";
 
 const ContentsComponent: FC<ContentsProps> = ({ children }): JSX.Element => {
   return (

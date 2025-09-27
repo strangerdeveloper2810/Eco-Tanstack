@@ -5,7 +5,7 @@ import {
   ErrorBoundary as ReactErrorBoundary,
   type FallbackProps,
 } from "react-error-boundary";
-import { type ErrorBoundaryProps } from "@/types/components";
+import { type ErrorBoundaryProps } from "@/types";
 
 // Default Error Fallback Component
 const DefaultErrorFallback: FC<FallbackProps> = ({

@@ -1,10 +1,7 @@
 import { type FC, type JSX, useEffect, useState, Suspense } from "react";
 import { LayoutLoading } from "@/components";
 import { Toaster } from "@/components/ui/sonner";
-
-interface AuthLayoutProps {
-  children?: React.ReactNode;
-}
+import { type AuthLayoutProps } from "@/types";
 
 const AuthLayoutComponent: FC<AuthLayoutProps> = ({
   children,

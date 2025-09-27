@@ -1,6 +1,6 @@
 import { type FC, type JSX, Suspense } from "react";
 import { PageLoading, ErrorBoundary } from "@/components";
-import { type SuspenseWrapperProps } from "@/types/components";
+import { type SuspenseWrapperProps } from "@/types";
 
 // Suspense wrapper with error boundary using react-error-boundary
 const SuspenseWrapper: FC<SuspenseWrapperProps> = ({

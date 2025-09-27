@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "@tanstack/react-router";
+import { type UseTitleProps } from "@/types";
 
 // Route title mapping
 const routeTitles: Record<string, string> = {
@@ -38,7 +39,7 @@ const DEFAULT_TITLE = "MovieBooking - Đặt vé phim trực tuyến";
  * useTitle("Movie Detail", " - Avengers: Endgame");
  * ```
  */
-export const useTitle = (customTitle?: string, suffix?: string) => {
+export const useTitle = ({ customTitle, suffix }: UseTitleProps = {}) => {
   const location = useLocation();
 
   useEffect(() => {
