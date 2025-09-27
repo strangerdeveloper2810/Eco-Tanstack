@@ -120,8 +120,8 @@ const LoginPage: FC = (): JSX.Element => {
           </div>
         </div>
 
-        {/* Remember Me & Forgot Password */}
-        <div className="flex items-center justify-between">
+        {/* Remember Me */}
+        <div className="flex items-center">
           <label className="flex items-center">
             <input
               type="checkbox"
@@ -131,12 +131,6 @@ const LoginPage: FC = (): JSX.Element => {
               Ghi nhớ đăng nhập
             </span>
           </label>
-          <Link
-            to="/forgot-password"
-            className="text-sm text-purple-600 hover:text-purple-700 font-medium"
-          >
-            Quên mật khẩu?
-          </Link>
         </div>
 
         {/* Submit Button */}
